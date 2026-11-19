@@ -6,7 +6,7 @@ from routes import router
 
 app = FastAPI(
     title="Ollama Chat API",
-    description="Talk to Ollama running locally or on Google Colab.",
+    description="Talk to Ollama running locally or on Google Colab, or through the OmniRoute gateway.",
     version="1.0.0",
 )
 

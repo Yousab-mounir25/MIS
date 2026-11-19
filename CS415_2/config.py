@@ -1,4 +1,4 @@
-"""Settings for the two Ollama backends (override with environment variables)."""
+"""Settings for the backends (override with environment variables)."""
 
 import os
 
@@ -18,6 +18,17 @@ BACKENDS: dict[str, dict[str, str]] = {
         ),
         "default_model": os.getenv("COLAB_MODEL", "llama3.2"),
     },
+    # OmniRoute gateway: picks which model answers, based on the combo's
+    # routing strategy (e.g. round-robin across the local Ollama models).
+    # OpenAI-compatible endpoint; the model name is the combo name.
+    "omniroute": {
+        "url": os.getenv("OMNIROUTE_URL", "http://localhost:20128/v1"),
+        "default_model": os.getenv("OMNIROUTE_MODEL", "MIS-router"),
+    },
 }
+
+# OmniRoute endpoint key (created in the OmniRoute dashboard → API Keys).
+# Read from the environment only — never hard-code it here or commit it.
+OMNIROUTE_API_KEY = os.getenv("OMNIROUTE_API_KEY", "")
 
 REQUEST_TIMEOUT_SECONDS = 300

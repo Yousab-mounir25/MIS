@@ -28,7 +28,7 @@ def list_backends() -> dict[str, dict[str, str]]:
 
 @router.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest) -> ChatResponse:
-    """Send a prompt to Ollama running locally or on Colab."""
+    """Send a prompt to Ollama (local or Colab) or through OmniRoute."""
 
     try:
         return chat_with_ollama(request)
